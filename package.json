@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-homework-01-CLI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "dev": "nodemon index "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarinaKarabut/nodejs-homework-01-CLI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarinaKarabut/nodejs-homework-01-CLI/issues"
+  },
+  "homepage": "https://github.com/MarinaKarabut/nodejs-homework-01-CLI#readme",
+  "dependencies": {
+    "nodemon": "^2.0.7",
+    "uuid": "^8.3.2",
+    "yargs": "^17.0.1"
+  }
+}
