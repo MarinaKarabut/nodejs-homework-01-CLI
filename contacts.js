@@ -16,9 +16,10 @@ const listContacts = async () => {
 }
 
 const getContactById = async (contactId) => {
+  const id = +contactId
   try {
     const contacts = await listContacts()
-    const contact = contacts.find((item) => item.id === contactId)
+    const contact = contacts.find((item) => item.id === id)
     return contact
   } catch (error) {
     throw error
@@ -26,9 +27,10 @@ const getContactById = async (contactId) => {
 }
 
 const removeContact = async (contactId) => {
+  const id = +contactId
   try {
     const contacts = await listContacts()
-    const newContacts = contacts.filter((item) => item.id !== contactId)
+    const newContacts = contacts.filter((item) => item.id !== id)
     const contactsStr = JSON.stringify(newContacts)
     await fs.writeFile(contactsPath, contactsStr)
     return newContacts
@@ -40,13 +42,15 @@ const removeContact = async (contactId) => {
 const addContact = async (name, email, phone) => {
   try {
     const newContact = {
-      id: v4(),
       name,
       email,
       phone,
     }
 
     const contacts = await listContacts()
+    const { length } = contacts
+    const lastId = contacts[length - 1].id
+    newContact.id = lastId + 1
     const newContacts = [...contacts, newContact]
     const contactStr = JSON.stringify(newContacts)
     await fs.writeFile(contactsPath, contactStr)
